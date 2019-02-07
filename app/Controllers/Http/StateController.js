@@ -25,14 +25,23 @@ class StateController {
         parsed.forEach(state => {
             if(state.country_id === +params.id && state.state_code === params.code.toUpperCase()) {
                 return response.json(state)
-            } else {
-                return response.status(404).json({
-                    message: 'State not found',
-                    status_code: 404
-                })
             }
         })
     }
+
+    async cities({ params, response }) {
+        const cities = Helpers.resourcesPath('json/cities.json')
+        const parsed = JSON.parse(fs.readFileSync(cities, 'utf8'))
+        
+        const collection = []
+        parsed.forEach(city => {
+            if(city.state_code === params.code.toUpperCase()) {
+                collection.push(city)
+            }
+        })
+
+        return response.json(collection)
+    }    
 }
 
 module.exports = StateController
