@@ -32,7 +32,7 @@ class CountryStateController {
                 })
             }
         })
-    }    
+    }
 }
 
 module.exports = CountryStateController
