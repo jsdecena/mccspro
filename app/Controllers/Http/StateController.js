@@ -2,7 +2,7 @@
 const Helpers = use('Helpers');
 let fs = require('fs');
 
-class CountryStateController {
+class StateController {
     
     async index({ params, response }) {
         const states = Helpers.resourcesPath('json/states.json')
@@ -35,4 +35,4 @@ class CountryStateController {
     }
 }
 
-module.exports = CountryStateController
+module.exports = StateController
