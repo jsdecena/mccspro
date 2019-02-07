@@ -21,3 +21,5 @@ Route.get('/', () => { return Env.get('APP_VERSION', 'v0.0.1'); });
 
 Route.get('countries', 'CountryController.index').as('countries.index');
 Route.get('countries/:id', 'CountryController.show').as('countries.show');
+Route.get('countries/:id/states', 'CountryStateController.index').as('countries.states.index');
+Route.get('countries/:id/states/:code', 'CountryStateController.show').as('countries.states.show');

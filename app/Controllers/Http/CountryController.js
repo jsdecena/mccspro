@@ -16,9 +16,14 @@ class CountryController {
         parsed.forEach(country => {
             if(country.id === +params.id) {
                 return response.json(country)
+            } else {
+                return response.status(404).json({
+                    message: 'Country not found',
+                    status_code: 404
+                })
             }
         });
-    }    
+    }
 }
 
 module.exports = CountryController
