@@ -7,10 +7,10 @@ class StateController {
     async index({ params, response }) {
         const states = Helpers.resourcesPath('json/states.json')
         const parsed = JSON.parse(fs.readFileSync(states, 'utf8'))
-        
+
         const collection = []
         parsed.forEach(state => {
-            if(state.country_id === +params.id) {
+            if(state.country_id === +params.id || state.country_iso3 === params.id.toUpperCase()) {
                 collection.push(state)
             }
         })
