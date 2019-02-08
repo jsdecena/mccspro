@@ -1,13 +1,11 @@
 'use strict'
-const Helpers = use('Helpers');
-let fs = require('fs');
+const JsonHelper = use('App/Models/Traits/JsonHelper')
 
 class ProvinceController {
     
     async index({ params, response }) {
 
-        const provinces = Helpers.resourcesPath('json/provinces.json')
-        const parsed = JSON.parse(fs.readFileSync(provinces, 'utf8'))
+        const parsed = JsonHelper.readFile('json/provinces.json')
         
         const collection = []
         parsed.forEach(province => {
@@ -19,18 +17,16 @@ class ProvinceController {
         return response.json(collection)
     }
 
-    async list({ params, response }) {
+    async list({ response }) {
 
-        const provinces = Helpers.resourcesPath('json/provinces.json')
-        const parsed = JSON.parse(fs.readFileSync(provinces, 'utf8'))
+        const parsed = JsonHelper.readFile('json/provinces.json')
 
         return response.json(parsed)
     }
 
     async show({ params, response }) {
 
-        const provinces = Helpers.resourcesPath('json/provinces.json')
-        const parsed = JSON.parse(fs.readFileSync(provinces, 'utf8'))
+        const parsed = JsonHelper.readFile('json/provinces.json')
         
         parsed.forEach(province => {
             if(province.country_id === +params.id && province.id === +params.provId) {
@@ -41,8 +37,7 @@ class ProvinceController {
 
     async province({ params, response }) {
 
-        const provinces = Helpers.resourcesPath('json/provinces.json')
-        const parsed = JSON.parse(fs.readFileSync(provinces, 'utf8'))
+        const parsed = JsonHelper.readFile('json/provinces.json')
         
         parsed.forEach(province => {
             if(province.id === +params.provId) {
@@ -53,8 +48,7 @@ class ProvinceController {
 
     async cities({ params, response }) {
 
-        const cities = Helpers.resourcesPath('json/cities.json')
-        const parsed = JSON.parse(fs.readFileSync(cities, 'utf8'))
+        const parsed = JsonHelper.readFile('json/cities.json')
         
         const collection = []
         parsed.forEach(city => {

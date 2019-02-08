@@ -1,17 +1,14 @@
 'use strict'
-const Helpers = use('Helpers');
-let fs = require('fs');
+const JsonHelper = use('App/Models/Traits/JsonHelper')
 
 class CountryController {
 
     async index() {
-        const countries = Helpers.resourcesPath('json/countries.json')
-        return JSON.parse(fs.readFileSync(countries, 'utf8'))
+        return JsonHelper.readFile('json/countries.json')
     }
 
     async show({ params, response }) {
-        const countries = Helpers.resourcesPath('json/countries.json')
-        const parsed = JSON.parse(fs.readFileSync(countries, 'utf8'))
+        const parsed = JsonHelper.readFile('json/countries.json')
 
         parsed.forEach(country => {
             if(country.id === +params.id || country.iso3 === params.id.toUpperCase()) {

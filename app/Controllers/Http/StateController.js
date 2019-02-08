@@ -1,12 +1,10 @@
 'use strict'
-const Helpers = use('Helpers');
-let fs = require('fs');
+const JsonHelper = use('App/Models/Traits/JsonHelper')
 
 class StateController {
     
     async index({ params, response }) {
-        const states = Helpers.resourcesPath('json/states.json')
-        const parsed = JSON.parse(fs.readFileSync(states, 'utf8'))
+        const parsed = JsonHelper.readFile('json/states.json')
 
         const collection = []
         parsed.forEach(state => {
@@ -19,8 +17,7 @@ class StateController {
     }
 
     async show({ params, response }) {
-        const states = Helpers.resourcesPath('json/states.json')
-        const parsed = JSON.parse(fs.readFileSync(states, 'utf8'))
+        const parsed = JsonHelper.readFile('json/states.json')
         
         parsed.forEach(state => {
             if(state.country_id === +params.id && state.state_code === params.code.toUpperCase()) {
@@ -30,8 +27,7 @@ class StateController {
     }
 
     async cities({ params, response }) {
-        const cities = Helpers.resourcesPath('json/cities.json')
-        const parsed = JSON.parse(fs.readFileSync(cities, 'utf8'))
+        const parsed = JsonHelper.readFile('json/states.json')
         
         const collection = []
         parsed.forEach(city => {
