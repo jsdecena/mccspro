@@ -28,6 +28,7 @@ Route.get('countries/:id/states/:code/cities', 'StateController.cities').as('cou
 
 Route.get('countries/:id/provinces', 'ProvinceController.index').as('countries.provinces.index');
 Route.get('countries/:id/provinces/:provId', 'ProvinceController.show').as('countries.provinces.show');
+Route.get('countries/:id/provinces/:provId/cities', 'ProvinceController.cities').as('countries.provinces.cities');
 
 Route.get('provinces', 'ProvinceController.list').as('provinces.index');
 Route.get('provinces/:provId', 'ProvinceController.province').as('provinces.show');
