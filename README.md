@@ -51,8 +51,8 @@ By default, this app run on port `3333`. You can change this in `.env` file.
 
 ```json
 # Country
-- http://127.0.0.1:3333/countries/226
-- http://127.0.0.1:3333/countries/usa
+- http://127.0.0.1:3333/countries/:id
+- http://127.0.0.1:3333/countries/:iso3
 
 # Output
 {
@@ -71,6 +71,7 @@ By default, this app run on port `3333`. You can change this in `.env` file.
 ```json
 # States
 - http://127.0.0.1:3333/countries/:id/states
+- http://127.0.0.1:3333/countries/:iso3/states
 
 # Output
 [
@@ -90,7 +91,7 @@ By default, this app run on port `3333`. You can change this in `.env` file.
 
 ```json
 # State
-- http://127.0.0.1:3333/countries/:id/states/AK
+- http://127.0.0.1:3333/countries/:id/states/:state_code
 
 # Output
     {
