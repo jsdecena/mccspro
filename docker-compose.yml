@@ -11,22 +11,6 @@ services:
       - app-ws
     stdin_open: true
     tty: true
-  database:
-    container_name: db
-    image: postgres:11.4
-    restart: always
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: secret
-      POSTGRES_DB: default
-      TZ: "Asia/Manila"
-      PGTZ: "Asia/Manila"
-    ports:
-      - "5432:5432"
-    volumes:
-      - ./db:/var/lib/postgresql/data
-    networks:
-      - app-ws
   web:
     container_name: app
     build: .
@@ -40,9 +24,7 @@ services:
     networks:
       - app-ws
     stdin_open: true
-    tty: true     
-    depends_on:
-      - database
+    tty: true
 networks:
   app-ws:
     driver: bridge
